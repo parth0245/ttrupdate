@@ -1,0 +1,181 @@
+<div class="container filterSection">
+  <!-- Filter-Section Starts -->
+  <div class="col-lg-12">
+    <div class="col-lg-3">
+      <div class="form-group">
+        <select class="form-control">
+          <option>Area</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <select class="form-control">
+          <option>Status</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <select class="form-control">
+          <option>Location</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <select class="form-control">
+          <option>Types</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-12">
+    <div class="col-lg-3">
+      <div class="form-group">
+        <select class="form-control">
+          <option>Bedrooms</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <select class="form-control">
+          <option>Bathroom</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="form-group">
+        <select class="form-control">
+          <option>Price</option>
+        </select>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <button type="button" class="col-lg-12 btn btn-success">Search</button>
+    </div>
+  </div>
+  <!-- Filter-Section Ends -->
+</div>
+<div class="container listContainer">
+  <h2 class="text-center padding-bottom-20 color-green">Featured Properties</h2>
+  <div class="col-lg-4" *ngFor="let i of [1,2,3,4,5,6]">
+    <div class="thumbnail property">
+      <img src="../../assets/bunglow.jpg" alt="" class="zoom">
+      <div class="property-tag button sale">For Sale</div>
+      <div class="caption">
+          <h3>Beautiful Single Home</h3>
+          <h4>Rs 20,000</h4>
+          <h4>Property ID : 12345</h4>
+        <div class="padding-bottom-5 padding-top-5">
+          <span class="glyphicon glyphicon-map-marker"></span>
+          <span>Indore</span>
+        </div>
+        <div class="row padding-bottom-5 padding-top-5">
+          <div class="col-lg-4 ">
+            <span class="glyphicon glyphicon-flash"></span>
+            <span>4800 sq ft</span>
+          </div>
+          <div class="col-lg-4">
+            <span class="glyphicon glyphicon-flash"></span>
+            <span>3 Beds</span>
+          </div>
+          <div class="col-lg-4">
+            <span class="glyphicon glyphicon-flash"></span>
+            <span>TV</span>
+          </div>
+        </div>
+        <div class="row padding-bottom-5 padding-top-5">
+          <div class="col-lg-4">
+            <span class="glyphicon glyphicon-flash"></span>
+            <span>2 Baths</span>
+          </div>
+          <div class="col-lg-4">
+            <span class="glyphicon glyphicon-flash"></span>
+            <span>1 Garage</span>
+          </div>
+          <div class="col-lg-4">
+            <span class="glyphicon glyphicon-flash"></span>
+            <span>3 Balcony</span>
+          </div>
+        </div>
+        <div class="row padding-bottom-5 padding-top-20 border-top-agent">
+            <div class="col-lg-4">
+                <span class="glyphicon glyphicon-user"></span>
+                <span>John</span>          
+            </div>
+            <div class="col-lg-4"></div>
+            <div class="col-lg-4">
+                <span class="	glyphicon glyphicon-calendar"></span>
+                <span>Today</span>          
+            </div>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- <div class="container listContainer">
+    <h2 class="text-center padding-bottom-20 color-green">Featured Projects</h2>
+    <div class="col-lg-4" *ngFor="let i of [1,2,3,4,5,6]">
+      <div class="thumbnail property">
+        <img src="../../assets/bunglow.jpg" alt="">
+        <div class="property-tag button sale">For Sale</div>
+        <div class="caption">
+            <h3>Beautiful Single Home</h3>
+            <h4>Rs 20,000</h4>
+            <h4>Property ID : 12345</h4>
+          <div class="padding-bottom-5 padding-top-5">
+            <span class="glyphicon glyphicon-map-marker"></span>
+            <span>Indore</span>
+          </div>
+          <div class="row padding-bottom-5 padding-top-5">
+            <div class="col-lg-4 ">
+              <span class="glyphicon glyphicon-flash"></span>
+              <span>4800 sq ft</span>
+            </div>
+            <div class="col-lg-4">
+              <span class="glyphicon glyphicon-flash"></span>
+              <span>3 Beds</span>
+            </div>
+            <div class="col-lg-4">
+              <span class="glyphicon glyphicon-flash"></span>
+              <span>TV</span>
+            </div>
+          </div>
+          <div class="row padding-bottom-5 padding-top-5">
+            <div class="col-lg-4">
+              <span class="glyphicon glyphicon-flash"></span>
+              <span>2 Baths</span>
+            </div>
+            <div class="col-lg-4">
+              <span class="glyphicon glyphicon-flash"></span>
+              <span>1 Garage</span>
+            </div>
+            <div class="col-lg-4">
+              <span class="glyphicon glyphicon-flash"></span>
+              <span>3 Balcony</span>
+            </div>
+          </div>
+          <div class="row padding-bottom-5 padding-top-20 border-top-agent">
+              <div class="col-lg-4">
+                  <span class="glyphicon glyphicon-user"></span>
+                  <span>John</span>          
+              </div>
+              <div class="col-lg-4"></div>
+              <div class="col-lg-4">
+                  <span class="	glyphicon glyphicon-calendar"></span>
+                  <span>Today</span>          
+              </div>
+              
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div> -->

@@ -1,0 +1,522 @@
+<div>
+  <form class="col-lg-12" name="userForm">
+    <div class="input-group col-lg-4">
+      <span class="input-group-addon">Name</span>
+      <input type="text" class="form-control" [(ngModel)]="username" name="name" placeholder="Eg: John" disabled>
+    </div>
+    <div class="input-group col-lg-4">
+      <span class="input-group-addon">Email</span>
+      <input type="text" class="form-control" [(ngModel)]="email" name="email" placeholder="Eg: example@example.com" disabled>
+    </div>
+    <div class="input-group col-lg-4">
+      <span class="input-group-addon">Mobile</span>
+      <input type="text" class="form-control" [(ngModel)]="mobile" name="mobile" placeholder="Eg: 0000000000" disabled>
+    </div>
+  </form>
+  <div class="col-lg-12">
+    <div>
+      <h3>Property Details</h3>
+      <div>
+        <div>
+          <form name="userForForm">
+            <div class="form-check">
+              <label>
+                For :
+              </label>
+            </div>
+            <div class="form-check">
+              <label>
+                <input type="radio" name="radio" value="sale" [(ngModel)]="propertyFor" (click)="setFor('sale')">
+                <span class="label-text">Sale</span>
+              </label>
+            </div>
+            <div class="form-check">
+              <label>
+                <input type="radio" name="radio" value="rent" [(ngModel)]="propertyFor" (click)="setFor('rent')">
+                <span class="label-text">Rent</span>
+              </label>
+            </div>
+            <div class="form-check">
+              <label>
+                <input type="radio" name="radio" value="pg" [(ngModel)]="propertyFor" (click)="setFor('pg')">
+                <span class="label-text">PG</span>
+              </label>
+            </div>
+            <div class="col-lg-12 noPadding">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Property Type</span>
+                <select class="form-control" name="propTypes" [(ngModel)]="selectedPropertyType">
+                  <option *ngFor="let i of propertyTypes" [ngValue]="i.id">{{i.name}}</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-lg-12">
+    <div>
+      <h3>Property Location</h3>
+      <div>
+        <div>
+          <form name="userLocationForm">
+            <div class="col-lg-12 noPadding">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Locality</span>
+                <select class="form-control" name="propLocation" [(ngModel)]="selectedpropertyLocation">
+                  <option *ngFor="let i of propertylocations" [ngValue]="i.id">{{i.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-12 noPadding">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon" *ngIf="!pg">Society Name</span>
+                <span class="input-group-addon" *ngIf="pg">PG Name</span>
+                <input type="text" class="form-control" [(ngModel)]="societyName" name="societyName" placeholder="Eg: NRK">
+              </div>
+            </div>
+            <div class="col-lg-12 noPadding">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Address</span>
+                <input type="text" class="form-control" [(ngModel)]="address" name="Address" placeholder="Eg: Geeta bhavan Road">
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-lg-12">
+    <div>
+      <h3>Property Features</h3>
+      <div>
+        <div>
+          <form name="propFeatureForm">
+            <div class="col-lg-12 noPadding" *ngIf="!pg">
+              <div class="form-group col-lg-4 noPadding">
+                <div class="form-check">
+                  <label>
+                    Bedrooms :
+                  </label>
+                </div>
+                <div class="btn-group">
+                  <button type="button" class="btn" [ngClass]="[setBedroomTo === i ? 'btn-primary' : '']" (click)="selectBedrooms(i)" *ngFor="let i of bedrooms">{{i}}</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 noPadding" *ngIf="!pg">
+              <div class="form-group col-lg-4 noPadding">
+                <div class="form-check">
+                  <label>
+                    Balconies :
+                  </label>
+                </div>
+                <div class="btn-group">
+                  <button type="button" class="btn" [ngClass]="[setBalconiesTo === i ? 'btn-primary' : '']" (click)="selectBalconies(i)" *ngFor="let i of bedrooms">{{i}}</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12 noPadding">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Total Floors</span>
+                <input type="text" class="form-control" [(ngModel)]="totalFloors" name="Total Floor" placeholder="Total Floors">
+              </div>
+            </div>
+            <div class="col-lg-12 noPadding">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Your Floor</span>
+                <input type="text" class="form-control" [(ngModel)]="selectedFloor" name="Selected Floor" placeholder="Your Floor">
+              </div>
+            </div>
+
+            <div class="form-group col-lg-4 noPadding" *ngIf="!pg">
+              <div class="form-check">
+                <label>
+                  Furnished Status :
+                </label>
+              </div>
+              <div class="btn-group">
+                <button type="button" class="btn" [ngClass]="[setFurnishedStatus === i ? 'btn-primary' : '']" (click)="selectFurnished(i)"
+                  *ngFor="let i of furnishedStatus">{{i}}</button>
+              </div>
+            </div>
+
+            <div class="col-lg-12 noPadding" *ngIf="!pg">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Bathrooms</span>
+                <input type="text" class="form-control" [(ngModel)]="bathroomsCount" name="bathrooms" placeholder="Eg: 2">
+              </div>
+            </div>
+
+            <div class="col-lg-12 noPadding" *ngIf="sale">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Construction Allowed</span>
+                <select class="form-control" [(ngModel)]="constructionAllowed" name="construction">
+                  <option value="yes">Yes</option>
+                  <option value="no">No</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-lg-12 noPadding" *ngIf="sale">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Open Sides</span>
+                <select class="form-control" [(ngModel)]="openSides" name="openSide">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-lg-12 noPadding" *ngIf="pg">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Available For</span>
+                <select class="form-control" [(ngModel)]="pgAvailableFor" name="availFor">
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="both">Both</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-lg-12 noPadding" *ngIf="pg">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Occupancy</span>
+                <select class="form-control" [(ngModel)]="pgOccupancy" name="occupancy">
+                  <option value="single">Single</option>
+                  <option value="sharing">Sharing</option>
+                  <option value="both">Both</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-lg-12 noPadding" *ngIf="pg">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">PG Age</span>
+                <select class="form-control" [(ngModel)]="pgAge" name="age">
+                  <option value="1">1 years</option>
+                  <option value="2">2 years</option>
+                  <option value="3">3 years</option>
+                  <option value="4">4 years</option>
+                  <option value="5">5 years</option>
+                  <option value="6">6 years</option>
+                  <option value="7">7 years</option>
+                  <option value="8">8 years</option>
+                  <option value="9">9 years</option>
+                  <option value="10">10 years</option>
+                  <option value="11">10+ years</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-lg-12 noPadding" *ngIf="pg">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Prefered tenant</span>
+                <select class="form-control" [(ngModel)]="pgtenants" name="pgtent">
+                  <option value="1">Student</option>
+                  <option value="2">Professionals</option>
+                  <option value="3">Both</option>
+                </select>
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-12 noPadding" *ngIf="pg">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Bathroom</span>
+                <select class="form-control" [(ngModel)]="pgBathroom" name="pgBath">
+                  <option value="1">Attached</option>
+                  <option value="2">Outside</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-lg-12 noPadding" *ngIf="pg">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Balcony</span>
+                <select class="form-control" [(ngModel)]="pgBalcony" name="pgBalconies">
+                  <option value="1">Attached</option>
+                  <option value="2">Outside</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-lg-12 noPadding" *ngIf="pg">
+              <div class="input-group col-lg-4">
+                <span class="input-group-addon">Common Area</span>
+                <select class="form-control" [(ngModel)]="pgCommonArea" name="pgCommonArea">
+                  <option value="1">Yes</option>
+                  <option value="2">No</option>
+                </select>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-lg-12" *ngIf="!pg">
+    <div>
+      <h3>Property Area</h3>
+      <div>
+        <div class="col-lg-12 noPadding">
+          <div class="input-group col-lg-4">
+            <span class="input-group-addon">Covered Area</span>
+            <input type="text" class="form-control" [(ngModel)]="propertyCoveredArea" name="Covered Area" placeholder="Eg: 1200">
+            <select class="form-control" [(ngModel)]="propertyCoveredAreaUnit">
+              <option value="ft">Sq-ft</option>
+              <option value="m">Sq-m</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-lg-12 noPadding">
+          <div class="input-group col-lg-4">
+            <span class="input-group-addon">Carpet Area</span>
+            <input type="text" class="form-control" [(ngModel)]="propertyCarpetArea" name="Carpet Area" placeholder="Eg: 1330">
+            <select class="form-control" [(ngModel)]="propertyCarpetAreaUnit">
+              <option value="ft">Sq-ft</option>
+              <option value="m">Sq-m</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-lg-12" *ngIf="!pg">
+    <div>
+      <h3>Property Availability</h3>
+      <div *ngIf="sale">
+        <div class="form-check">
+          <label>
+            Type :
+          </label>
+        </div>
+        <div class="form-check">
+          <label>
+            <input type="radio" name="radio" (click)="setPropertyAvailabilityType('new');return">
+            <span class="label-text">New</span>
+          </label>
+        </div>
+        <div class="form-check">
+          <label>
+            <input type="radio" name="radio" (click)="setPropertyAvailabilityType('resale');return">
+            <span class="label-text">Resale</span>
+          </label>
+        </div>
+      </div>
+
+      <div *ngIf="rent">
+        <div class="form-check">
+          <label>
+            Available From :
+          </label>
+        </div>
+        <div class="form-check">
+          <label>
+            <input type="radio" name="radio" (click)="showDate=true;availableFromForRent='date';return">
+            <span class="label-text">Date</span>
+          </label>
+        </div>
+        <div class="form-check">
+          <label>
+            <input type="radio" name="radio" (click)="showDate=false;availableFromForRent='immediate';return">
+            <span class="label-text">Immediately</span>
+          </label>
+        </div>
+
+        <div class="col-lg-12 noPadding" *ngIf="showDate">
+          <div class="input-group col-lg-4">
+            <span class="input-group-addon">Available From</span>
+            <select class="form-control" [(ngModel)]="rentPropAvailableDay">
+              <option [ngValue]="i" *ngFor="let i of days">{{i}}</option>
+            </select>
+            <select class="form-control" [(ngModel)]="rentPropAvailableMonth">
+              <option [ngValue]="i" *ngFor="let i of months">{{i}}</option>
+            </select>
+            <select class="form-control" [(ngModel)]="rentPropAvailableYear">
+              <option [ngValue]="i" *ngFor="let i of years">{{i}}</option>
+            </select>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div *ngIf="sale">
+        <div class="form-check">
+          <label>
+            Status :
+          </label>
+        </div>
+        <div class="form-check">
+          <label>
+            <input type="radio" name="radio" (click)="propertyStatus = 'underconstruction'">
+            <span class="label-text">Under Construction</span>
+          </label>
+        </div>
+        <div class="form-check">
+          <label>
+            <input type="radio" name="radio" (click)="propertyStatus = 'readytomove'">
+            <span class="label-text">Ready to move</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="col-lg-12 noPadding" *ngIf="rent">
+        <div class="input-group col-lg-4">
+          <span class="input-group-addon">Age Of Construction</span>
+
+          <select class="form-control" [(ngModel)]="ageOfConstruction">
+            <option [ngValue]="i" *ngFor="let i of ['1 year','2 year','3 year','4 year','5 year','6 year','7 year','8 year','9 year','10 year','10+ year']">{{i}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-lg-12 noPadding" *ngIf="propertyStatus !== 'underconstruction' && propertyStatus && sale">
+        <div class="input-group col-lg-4">
+          <span class="input-group-addon">Age Of Construction</span>
+          <select class="form-control" [(ngModel)]="ageOfConstruction">
+            <option [ngValue]="i" *ngFor="let i of ['1 year','2 year','3 year','4 year','5 year','6 year','7 year','8 year','9 year','10 year','10+ year']">{{i}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="col-lg-12 noPadding" *ngIf="propertyStatus === 'underconstruction' && propertyStatus && sale">
+        <div class="input-group col-lg-4">
+          <span class="input-group-addon">Available From</span>
+          <select class="form-control" [(ngModel)]="salePropAvailableMonth">
+            <option [ngValue]="i" *ngFor="let i of months">{{i}}</option>
+          </select>
+          <select class="form-control" [(ngModel)]="salePropAvailableYear">
+            <option [ngValue]="i" *ngFor="let i of years">{{i}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-lg-12" *ngIf="pg">
+    <div>
+      <h3>Furnishing</h3>
+      <div class="col-lg-4">
+        <div class="form-check" *ngFor="let test of pgFurnishing">
+          <label>
+            <input type="checkbox" name="check" [(ngModel)]="test.selected">
+            <span class="label-text">{{test.name}}</span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-12">
+    <div>
+      <h3 *ngIf="sale">Property Price</h3>
+      <h3 *ngIf="rent || pg">Rent</h3>
+      <div>
+        <div class="col-lg-12 noPadding">
+          <div class="input-group col-lg-4">
+            <span class="input-group-addon">Expected Price</span>
+            <input type="text" class="form-control" name="expPrice" [(ngModel)]="propertyPrice" placeholder="Amount">
+          </div>
+        </div>
+
+        <div class="col-lg-12 noPadding">
+          <div class="input-group col-lg-4">
+            <span class="input-group-addon">Maintainance (Yearly)</span>
+            <input type="text" class="form-control" name="maintainance" [(ngModel)]="propertyMainPrice" placeholder="Maintainance">
+          </div>
+        </div>
+
+        <div class="col-lg-12 noPadding" *ngIf="!pg">
+          <div class="input-group col-lg-4">
+            <span class="input-group-addon">Other Charges</span>
+            <input type="text" class="form-control" name="charges" [(ngModel)]="propertyOtherPrice" placeholder="Other Charges">
+          </div>
+        </div>
+
+        <div class="col-lg-12 noPadding" *ngIf="pg">
+          <div class="input-group col-lg-4">
+            <span class="input-group-addon">Electricity</span>
+            <input type="text" class="form-control" name="ElectCharges" [(ngModel)]="propertyElectricityPrice" placeholder="Electricity Charges">
+          </div>
+        </div>
+
+        <div class="col-lg-12 noPadding" *ngIf="pg">
+          <div class="input-group col-lg-4">
+            <span class="input-group-addon">Laundary</span>
+            <input type="text" class="form-control" name="laundry" [(ngModel)]="laundryCharges" placeholder="Laundary Charges">
+          </div>
+        </div>
+
+        <div class="col-lg-12 noPadding" *ngIf="pg">
+          <div class="input-group col-lg-4">
+            <span class="input-group-addon">Security</span>
+            <input type="text" class="form-control" name="security" [(ngModel)]="securityCharges" placeholder="Security Deposit">
+          </div>
+        </div>
+
+        <div class="col-lg-12 noPadding" *ngIf="pg">
+          <div class="input-group col-lg-4">
+            <span class="input-group-addon">Notice Period</span>
+            <select class="form-control" [(ngModel)]="NoticePeriod">
+              <option vlaue="0">No</option>
+              <option vlaue="1">1 month</option>
+              <option vlaue="2">2 month</option>
+            </select>
+          </div>
+        </div>
+
+
+
+        <div class="col-lg-12 noPadding" *ngIf="sale">
+          Stamp Duty & Registration charges are excluded.
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-lg-12">
+    <div>
+      <h3>Property Photos</h3>
+      <div>
+        <img src="../../assets/bunglow.jpg" height="50" width="50" />
+        <img src="../../assets/bunglow.jpg" height="50" width="50" />
+        <img src="../../assets/bunglow.jpg" height="50" width="50" />
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="col-lg-12">
+    <div class="agreeToPost">
+      <label>
+        <input type="checkbox" name="check" [(ngModel)]="agreeToPost">
+        <span class="label-text">Agree to Post</span>
+      </label>
+    </div>
+  </div>
+  <button class="btn btn-success col-lg-3" [routerLink]="['/dashboard/packages']">
+    Continue
+  </button>
+
+</div>
